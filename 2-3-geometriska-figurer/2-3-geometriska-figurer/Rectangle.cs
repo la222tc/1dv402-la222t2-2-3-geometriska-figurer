@@ -8,13 +8,18 @@ namespace _2_3_geometriska_figurer
 {
     class Rectangle : Shape
     {
-        public double Area
-        { get; }
+        public override double Area
+        {
+            get { return Length * Width; }
+        }
 
-        public double Perimeter
-        { get; }
+        public override double Perimeter
+        {
+            get { return 2 * Length + 2 * Width; }
+        }
 
         public Rectangle(double length, double width)
+            : base(length, width)
         {
 
         }

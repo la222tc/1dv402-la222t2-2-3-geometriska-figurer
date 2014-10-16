@@ -6,31 +6,58 @@ using System.Threading.Tasks;
 
 namespace _2_3_geometriska_figurer
 {
+
+
     abstract class Shape
     {
         private double _length;
-        private double _widht;
+        private double _width;
 
         public abstract double Area
         { get; }
 
         public double Length
-        { get; set; }
+        {
+            get { return _length; }
 
-        public abstract double Perineter
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException();
+                }
+                _length = value;
+            }
+
+        }
+
+        public abstract double Perimeter
         { get; }
 
         public double Width
-        { get; set; }
+        {
+            get { return _width; }
+
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException();
+                }
+                _width = value;
+            }
+        }
 
         protected Shape(double length, double width)
         {
-                
+            Length = length;
+            Width = width;
         }
 
-        public string ToString()
+        public override string ToString()
         {
-            return "hej";
+            return String.Format("Längd:        {0}\nBredd:        {1}\nOmkrets:      {2:0.0}\nArea:        {3:0.0}\n ",
+                Length, Width, Perimeter, Area);
         }
     }
 }
